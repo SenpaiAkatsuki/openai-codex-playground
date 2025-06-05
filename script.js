@@ -1,4 +1,5 @@
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let cartTotal = 0;
 updateCartCount();
 
 function addToCart(name, price, image) {
@@ -16,9 +17,9 @@ function displayCart() {
     const container = document.getElementById('cart-items');
     if (!container) return;
     container.innerHTML = '';
-    let total = 0;
+    cartTotal = 0;
     cart.forEach(item => {
-        total += item.price;
+        cartTotal += item.price;
         const div = document.createElement('div');
         div.className = 'cart-item';
         div.innerHTML = `<img src="${item.image}" alt="${item.name}"> <span>${item.name}</span> - $${item.price.toFixed(2)}`;
@@ -26,8 +27,30 @@ function displayCart() {
     });
     const totalElem = document.getElementById('total');
     if (totalElem) {
-        totalElem.textContent = `Total: $${total.toFixed(2)}`;
+        totalElem.textContent = `Total: $${cartTotal.toFixed(2)}`;
     }
+    renderPayPalButton();
+}
+
+function renderPayPalButton() {
+    const container = document.getElementById('paypal-button-container');
+    if (!container || typeof paypal === 'undefined') return;
+    container.innerHTML = '';
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{ amount: { value: cartTotal.toFixed(2) } }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                alert('Transaction completed by ' + details.payer.name.given_name);
+                cart = [];
+                localStorage.removeItem('cart');
+                displayCart();
+            });
+        }
+    }).render('#paypal-button-container');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
