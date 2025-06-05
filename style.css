@@ -49,3 +49,27 @@ button {
 button:hover {
     background: #008ecc;
 }
+
+.checkout-button {
+    background: #00cc66;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cart-item img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.total {
+    font-weight: bold;
+    margin-top: 20px;
+}

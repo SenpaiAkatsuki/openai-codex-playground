@@ -11,25 +11,26 @@
     <header>
         <h1>Rubber Duck Store</h1>
         <div class="cart">Cart: <span id="cart-count">0</span></div>
+        <a href="checkout.html" class="checkout-button">Checkout</a>
     </header>
     <main>
         <div class="product">
             <img src="https://dummyimage.com/200x200/ffde00/000&text=Classic+Duck" alt="Classic Yellow Duck" />
             <h2>Classic Yellow Duck</h2>
             <p class="price">$5.00</p>
-            <button onclick="addToCart()">Add to Cart</button>
+            <button onclick="addToCart('Classic Yellow Duck', 5.00, 'https://dummyimage.com/200x200/ffde00/000&text=Classic+Duck')">Add to Cart</button>
         </div>
         <div class="product">
             <img src="https://dummyimage.com/200x200/00aaff/000&text=Fancy+Blue+Duck" alt="Fancy Blue Duck" />
             <h2>Fancy Blue Duck</h2>
             <p class="price">$7.50</p>
-            <button onclick="addToCart()">Add to Cart</button>
+            <button onclick="addToCart('Fancy Blue Duck', 7.50, 'https://dummyimage.com/200x200/00aaff/000&text=Fancy+Blue+Duck')">Add to Cart</button>
         </div>
         <div class="product">
             <img src="https://dummyimage.com/200x200/ff00aa/000&text=Giant+Duck" alt="Giant Duck" />
             <h2>Giant Duck</h2>
             <p class="price">$12.00</p>
-            <button onclick="addToCart()">Add to Cart</button>
+            <button onclick="addToCart('Giant Duck', 12.00, 'https://dummyimage.com/200x200/ff00aa/000&text=Giant+Duck')">Add to Cart</button>
         </div>
     </main>
     <script src="script.js"></script>

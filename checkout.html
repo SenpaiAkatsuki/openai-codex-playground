@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Checkout</h1>
+        <div class="cart">Cart: <span id="cart-count">0</span></div>
+        <a href="index.html" class="checkout-button">Continue Shopping</a>
+    </header>
+    <main>
+        <div id="cart-items"></div>
+        <div id="total" class="total"></div>
+        <button id="place-order">Place Order</button>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        displayCart();
+    </script>
+</body>
+</html>
